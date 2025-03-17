@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package adminMemoria;
+
+service AdminMemoria {
+  rpc Saludar (SaludoRequest) returns (SaludoResponse);
+}
+
+message SaludoRequest {
+  string nombre = 1;
+}
+
+message SaludoResponse {
+  string mensaje = 1;
+}
