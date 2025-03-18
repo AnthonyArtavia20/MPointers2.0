@@ -1,31 +1,73 @@
 cmake_minimum_required(VERSION 3.10)
-project(mi_proyecto_grpc)
+project(MemoryManager)
 
-# Busca gRPC y Protobuf
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Encontrar Protobuf y gRPC
 find_package(Protobuf REQUIRED)
 find_package(gRPC REQUIRED)
 
-# Incluye los archivos generados por protoc
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/proto)
+# Generar código desde .proto
+get_filename_component(hw_proto "memory_manager.proto" ABSOLUTE)
+get_filename_component(hw_proto_path "${hw_proto}" PATH)
 
-# Archivos generados por protoc
-set(PROTO_SRCS
-  src/proto/servicios.pb.cc
-  src/proto/servicios.grpc.pb.cc
+# Generar archivos .pb.{h,cc}
+add_custom_command(
+      OUTPUT "memory_manager.pb.h" "memory_manager.pb.cc"
+      COMMAND ${PROTOBUF_PROTOC_EXECUTABLE}
+      ARGS --proto_path=${hw_proto_path}
+           --cpp_out=${CMAKE_CURRENT_BINARY_DIR}
+           ${hw_proto}
+      DEPENDS ${hw_proto})
+
+# Generar archivos .grpc.pb.{h,cc}
+add_custom_command(
+      OUTPUT "memory_manager.grpc.pb.h" "memory_manager.grpc.pb.cc"
+      COMMAND ${PROTOBUF_PROTOC_EXECUTABLE}
+      ARGS --proto_path=${hw_proto_path}
+           --grpc_out=${CMAKE_CURRENT_BINARY_DIR}
+           --plugin=protoc-gen-grpc=`which grpc_cpp_plugin`
+           ${hw_proto}
+      DEPENDS ${hw_proto})
+
+# Definir biblioteca proto
+add_library(memory_proto
+  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.pb.cc
+  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.pb.h
+  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.grpc.pb.cc
+  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.grpc.pb.h
 )
 
-# Archivos del servidor
-set(SERVER_SRCS
-  src/server/server.cpp
-)
-
-# Compila el servidor
-add_executable(server ${SERVER_SRCS} ${PROTO_SRCS})
-
-# Vincula las bibliotecas de gRPC y Protobuf
-target_link_libraries(server
+target_link_libraries(memory_proto
+  ${PROTOBUF_LIBRARIES}
   gRPC::grpc++
-  gRPC::grpc
   gRPC::grpc++_reflection
-  ${Protobuf_LIBRARIES}
+)
+
+target_include_directories(memory_proto PUBLIC
+  ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+# Servidor
+add_executable(mem-mgr
+  memory_manager_server.cpp
+)
+
+target_link_libraries(mem-mgr
+  memory_proto
+  ${PROTOBUF_LIBRARIES}
+  gRPC::grpc++
+  gRPC::grpc++_reflection
+)
+
+# Cliente de prueba
+add_executable(mem-client
+  memory_manager_client.cpp
+)
+
+target_link_libraries(mem-client
+  memory_proto
+  ${PROTOBUF_LIBRARIES}
+  gRPC::grpc++
 )

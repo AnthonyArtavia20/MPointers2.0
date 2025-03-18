@@ -1,0 +1,64 @@
+syntax = "proto3"; // se usará proto3
+
+package memory_manager; // Paquete = namespace, se usa para poder utilizar varios .proto sin conflictos.
+
+// Servicio principal para el Memory Manager
+service MemoryService {
+
+  //Métodos RPC del servicio.
+  // Crear un nuevo bloque de memoria
+  rpc Create(CreateRequest) returns (CreateResponse) {}
+
+  // Establecer un valor en un bloque de memoria
+  rpc Set(SetRequest) returns (SetResponse) {}
+
+  // Obtener un valor de un bloque de memoria
+  rpc Get(GetRequest) returns (GetResponse) {}
+
+  // Incrementar el contador de referencias
+  rpc IncreaseRefCount(RefCountRequest) returns (RefCountResponse) {}
+
+  // Decrementar el contador de referencias
+  rpc DecreaseRefCount(RefCountRequest) returns (RefCountResponse) {}
+}
+
+//Mensaje para solicitar la creación de un bloque de memoria
+message CreateRequest {
+  uint32 size = 1;     // Tamaño en bytes
+  string type = 2;     // Tipo de dato (ej: "int", "float", etc.)
+}
+
+message CreateResponse {
+  uint64 id = 1;       // Identificador único para el bloque de memoria
+  bool success = 2;    // Indica si la operación fue exitosa
+}
+
+// Mensaje para establecer un valor en un bloque de memoria
+message SetRequest {
+  uint64 id = 1;       // Identificador del bloque
+  bytes value = 2;     // Valor a establecer (serializado)
+}
+
+message SetResponse {
+  bool success = 1;    // Indica si la operación fue exitosa
+}
+
+// Mensaje para obtener un valor de un bloque de memoria
+message GetRequest {
+  uint64 id = 1;       // Identificador del bloque
+}
+
+message GetResponse {
+  bytes value = 1;     // Valor almacenado (serializado)
+  bool success = 2;    // Indica si la operación fue exitosa
+}
+
+// Mensaje para incrementar/decrementar el contador de referencias
+message RefCountRequest {
+  uint64 id = 1;       // Identificador del bloque
+}
+
+message RefCountResponse {
+  uint32 count = 1;    // Nuevo contador de referencias
+  bool success = 2;    // Indica si la operación fue exitosa
+}

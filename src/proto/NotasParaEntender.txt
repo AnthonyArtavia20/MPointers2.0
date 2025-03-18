@@ -1,5 +1,0 @@
-Los archivos en esta carpeta Proto son para:
-
-servicios.pb.cc y servicios.pb.h: Para los mensajes.
-
-servicios.grpc.pb.cc y servicios.grpc.pb.h: Para el servicio gRPC.
