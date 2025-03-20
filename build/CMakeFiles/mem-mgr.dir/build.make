@@ -69,28 +69,28 @@ include CMakeFiles/mem-mgr.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/mem-mgr.dir/flags.make
 
-CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o: CMakeFiles/mem-mgr.dir/flags.make
-CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o: /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_server.cpp
-CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o: CMakeFiles/mem-mgr.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o -MF CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o.d -o CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o -c "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_server.cpp"
+CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o: CMakeFiles/mem-mgr.dir/flags.make
+CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o: /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Server/memory_manager_server.cpp
+CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o: CMakeFiles/mem-mgr.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o -MF CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o.d -o CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o -c "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Server/memory_manager_server.cpp"
 
-CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_server.cpp" > CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.i
+CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Server/memory_manager_server.cpp" > CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.i
 
-CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_server.cpp" -o CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.s
+CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Server/memory_manager_server.cpp" -o CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.s
 
 # Object files for target mem-mgr
 mem__mgr_OBJECTS = \
-"CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o"
+"CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o"
 
 # External object files for target mem-mgr
 mem__mgr_EXTERNAL_OBJECTS =
 
-mem-mgr: CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o
+mem-mgr: CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o
 mem-mgr: CMakeFiles/mem-mgr.dir/build.make
 mem-mgr: libmemory_proto.a
 mem-mgr: /usr/local/lib/libprotobuf.a

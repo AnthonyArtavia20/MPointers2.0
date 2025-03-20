@@ -51,7 +51,7 @@ target_include_directories(memory_proto PUBLIC
 
 # Servidor
 add_executable(mem-mgr
-  memory_manager_server.cpp
+  Server/memory_manager_server.cpp
 )
 
 target_link_libraries(mem-mgr
@@ -63,7 +63,7 @@ target_link_libraries(mem-mgr
 
 # Cliente de prueba
 add_executable(mem-client
-  memory_manager_client.cpp
+  Client/memory_manager_client.cpp
 )
 
 target_link_libraries(mem-client

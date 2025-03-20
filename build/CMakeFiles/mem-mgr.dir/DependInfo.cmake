@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_server.cpp" "CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o" "gcc" "CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o.d"
+  "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Server/memory_manager_server.cpp" "CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o" "gcc" "CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

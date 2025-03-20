@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o"
-  "CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o.d"
+  "CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o"
+  "CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o.d"
   "mem-mgr"
   "mem-mgr.pdb"
 )

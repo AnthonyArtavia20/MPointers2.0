@@ -4,7 +4,7 @@
 #include <grpcpp/grpcpp.h> // Uso de gRPC
 #include <grpcpp/health_check_service_interface.h> // de gRPC para verificar que el server funcione correctamente
 #include <grpcpp/ext/proto_server_reflection_plugin.h> // Para gRPC
-#include "memory_manager.grpc.pb.h" //Incluye el archivo generado por el compilador de gRPC a partir defl archivo .proto del servicio MemoryService. Este archivo contiene las definiciones de los mensajes y servicios utilizados en el código.
+#include "../ProtoCompilation/memory_manager.grpc.pb.h" //Incluye el archivo generado por el compilador de gRPC a partir defl archivo .proto del servicio MemoryService. Este archivo contiene las definiciones de los mensajes y servicios utilizados en el código.
 
 class MemoryServiceImpl final : public memory_manager::MemoryService::Service {
 private: //Definición de atributos(varaibles miembro)

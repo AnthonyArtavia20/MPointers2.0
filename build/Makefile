@@ -155,6 +155,54 @@ mem-client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/build
 .PHONY : mem-client/fast
 
+Client/memory_manager_client.o: Client/memory_manager_client.cpp.o
+.PHONY : Client/memory_manager_client.o
+
+# target to build an object file
+Client/memory_manager_client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o
+.PHONY : Client/memory_manager_client.cpp.o
+
+Client/memory_manager_client.i: Client/memory_manager_client.cpp.i
+.PHONY : Client/memory_manager_client.i
+
+# target to preprocess a source file
+Client/memory_manager_client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.i
+.PHONY : Client/memory_manager_client.cpp.i
+
+Client/memory_manager_client.s: Client/memory_manager_client.cpp.s
+.PHONY : Client/memory_manager_client.s
+
+# target to generate assembly for a file
+Client/memory_manager_client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.s
+.PHONY : Client/memory_manager_client.cpp.s
+
+Server/memory_manager_server.o: Server/memory_manager_server.cpp.o
+.PHONY : Server/memory_manager_server.o
+
+# target to build an object file
+Server/memory_manager_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-mgr.dir/build.make CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.o
+.PHONY : Server/memory_manager_server.cpp.o
+
+Server/memory_manager_server.i: Server/memory_manager_server.cpp.i
+.PHONY : Server/memory_manager_server.i
+
+# target to preprocess a source file
+Server/memory_manager_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-mgr.dir/build.make CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.i
+.PHONY : Server/memory_manager_server.cpp.i
+
+Server/memory_manager_server.s: Server/memory_manager_server.cpp.s
+.PHONY : Server/memory_manager_server.s
+
+# target to generate assembly for a file
+Server/memory_manager_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-mgr.dir/build.make CMakeFiles/mem-mgr.dir/Server/memory_manager_server.cpp.s
+.PHONY : Server/memory_manager_server.cpp.s
+
 memory_manager.grpc.pb.o: memory_manager.grpc.pb.cc.o
 .PHONY : memory_manager.grpc.pb.o
 
@@ -203,54 +251,6 @@ memory_manager.pb.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_proto.dir/build.make CMakeFiles/memory_proto.dir/memory_manager.pb.cc.s
 .PHONY : memory_manager.pb.cc.s
 
-memory_manager_client.o: memory_manager_client.cpp.o
-.PHONY : memory_manager_client.o
-
-# target to build an object file
-memory_manager_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/memory_manager_client.cpp.o
-.PHONY : memory_manager_client.cpp.o
-
-memory_manager_client.i: memory_manager_client.cpp.i
-.PHONY : memory_manager_client.i
-
-# target to preprocess a source file
-memory_manager_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/memory_manager_client.cpp.i
-.PHONY : memory_manager_client.cpp.i
-
-memory_manager_client.s: memory_manager_client.cpp.s
-.PHONY : memory_manager_client.s
-
-# target to generate assembly for a file
-memory_manager_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/memory_manager_client.cpp.s
-.PHONY : memory_manager_client.cpp.s
-
-memory_manager_server.o: memory_manager_server.cpp.o
-.PHONY : memory_manager_server.o
-
-# target to build an object file
-memory_manager_server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-mgr.dir/build.make CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.o
-.PHONY : memory_manager_server.cpp.o
-
-memory_manager_server.i: memory_manager_server.cpp.i
-.PHONY : memory_manager_server.i
-
-# target to preprocess a source file
-memory_manager_server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-mgr.dir/build.make CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.i
-.PHONY : memory_manager_server.cpp.i
-
-memory_manager_server.s: memory_manager_server.cpp.s
-.PHONY : memory_manager_server.s
-
-# target to generate assembly for a file
-memory_manager_server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-mgr.dir/build.make CMakeFiles/mem-mgr.dir/memory_manager_server.cpp.s
-.PHONY : memory_manager_server.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -262,18 +262,18 @@ help:
 	@echo "... mem-client"
 	@echo "... mem-mgr"
 	@echo "... memory_proto"
+	@echo "... Client/memory_manager_client.o"
+	@echo "... Client/memory_manager_client.i"
+	@echo "... Client/memory_manager_client.s"
+	@echo "... Server/memory_manager_server.o"
+	@echo "... Server/memory_manager_server.i"
+	@echo "... Server/memory_manager_server.s"
 	@echo "... memory_manager.grpc.pb.o"
 	@echo "... memory_manager.grpc.pb.i"
 	@echo "... memory_manager.grpc.pb.s"
 	@echo "... memory_manager.pb.o"
 	@echo "... memory_manager.pb.i"
 	@echo "... memory_manager.pb.s"
-	@echo "... memory_manager_client.o"
-	@echo "... memory_manager_client.i"
-	@echo "... memory_manager_client.s"
-	@echo "... memory_manager_server.o"
-	@echo "... memory_manager_server.i"
-	@echo "... memory_manager_server.s"
 .PHONY : help
 
 

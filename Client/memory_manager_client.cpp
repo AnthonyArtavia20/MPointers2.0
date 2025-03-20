@@ -2,7 +2,7 @@
 #include <memory>
 #include <string>
 #include <grpcpp/grpcpp.h>
-#include "memory_manager.grpc.pb.h"
+#include "../ProtoCompilation/memory_manager.grpc.pb.h"
 
 class MemoryManagerClient { // Clase para el RPC - cliente
 public:

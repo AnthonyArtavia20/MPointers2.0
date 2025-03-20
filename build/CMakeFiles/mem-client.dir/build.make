@@ -69,28 +69,28 @@ include CMakeFiles/mem-client.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/mem-client.dir/flags.make
 
-CMakeFiles/mem-client.dir/memory_manager_client.cpp.o: CMakeFiles/mem-client.dir/flags.make
-CMakeFiles/mem-client.dir/memory_manager_client.cpp.o: /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_client.cpp
-CMakeFiles/mem-client.dir/memory_manager_client.cpp.o: CMakeFiles/mem-client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mem-client.dir/memory_manager_client.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mem-client.dir/memory_manager_client.cpp.o -MF CMakeFiles/mem-client.dir/memory_manager_client.cpp.o.d -o CMakeFiles/mem-client.dir/memory_manager_client.cpp.o -c "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_client.cpp"
+CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o: CMakeFiles/mem-client.dir/flags.make
+CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o: /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Client/memory_manager_client.cpp
+CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o: CMakeFiles/mem-client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o -MF CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o.d -o CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o -c "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Client/memory_manager_client.cpp"
 
-CMakeFiles/mem-client.dir/memory_manager_client.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mem-client.dir/memory_manager_client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_client.cpp" > CMakeFiles/mem-client.dir/memory_manager_client.cpp.i
+CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Client/memory_manager_client.cpp" > CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.i
 
-CMakeFiles/mem-client.dir/memory_manager_client.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mem-client.dir/memory_manager_client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager_client.cpp" -o CMakeFiles/mem-client.dir/memory_manager_client.cpp.s
+CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/Client/memory_manager_client.cpp" -o CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.s
 
 # Object files for target mem-client
 mem__client_OBJECTS = \
-"CMakeFiles/mem-client.dir/memory_manager_client.cpp.o"
+"CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o"
 
 # External object files for target mem-client
 mem__client_EXTERNAL_OBJECTS =
 
-mem-client: CMakeFiles/mem-client.dir/memory_manager_client.cpp.o
+mem-client: CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o
 mem-client: CMakeFiles/mem-client.dir/build.make
 mem-client: libmemory_proto.a
 mem-client: /usr/local/lib/libprotobuf.a
