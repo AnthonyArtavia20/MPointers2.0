@@ -155,6 +155,30 @@ mem-client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/build
 .PHONY : mem-client/fast
 
+Client/main.o: Client/main.cpp.o
+.PHONY : Client/main.o
+
+# target to build an object file
+Client/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/Client/main.cpp.o
+.PHONY : Client/main.cpp.o
+
+Client/main.i: Client/main.cpp.i
+.PHONY : Client/main.i
+
+# target to preprocess a source file
+Client/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/Client/main.cpp.i
+.PHONY : Client/main.cpp.i
+
+Client/main.s: Client/main.cpp.s
+.PHONY : Client/main.s
+
+# target to generate assembly for a file
+Client/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mem-client.dir/build.make CMakeFiles/mem-client.dir/Client/main.cpp.s
+.PHONY : Client/main.cpp.s
+
 Client/memory_manager_client.o: Client/memory_manager_client.cpp.o
 .PHONY : Client/memory_manager_client.o
 
@@ -262,6 +286,9 @@ help:
 	@echo "... mem-client"
 	@echo "... mem-mgr"
 	@echo "... memory_proto"
+	@echo "... Client/main.o"
+	@echo "... Client/main.i"
+	@echo "... Client/main.s"
 	@echo "... Client/memory_manager_client.o"
 	@echo "... Client/memory_manager_client.i"
 	@echo "... Client/memory_manager_client.s"

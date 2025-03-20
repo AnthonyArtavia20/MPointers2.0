@@ -61,8 +61,9 @@ target_link_libraries(mem-mgr
   gRPC::grpc++_reflection
 )
 
-# Cliente de prueba
+# Cliente de prueba(modificación: usando main.cpp como punto de entrada, ya no el memory_manager_client.cpp)
 add_executable(mem-client
+  Client/main.cpp
   Client/memory_manager_client.cpp
 )
 

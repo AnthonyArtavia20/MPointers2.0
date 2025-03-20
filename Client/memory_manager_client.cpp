@@ -10,7 +10,7 @@ public:
         : stub_(memory_manager::MemoryService::NewStub(
             grpc::CreateChannel(server_address, grpc::InsecureChannelCredentials()))) {
         std::cout << "Cliente conectado a: " << server_address << std::endl;
-        //Nota personal: El uso de InsecureChannelCredetials está ok, pero no es recoemdando para un proyecto real.
+        //Nota personal: El uso de InsecureChannelCredetials está ok, pero no es recomendando para un proyecto real.
     }
 
     //Listado de métodos:
@@ -118,29 +118,3 @@ public:
 private:
     std::unique_ptr<memory_manager::MemoryService::Stub> stub_;
 };
-
-// Esta es una función de prueba simple
-int main(int argc, char** argv) {
-    // Parametrizar el servidor si se proporciona, de lo contrario usar localhost:50051
-    std::string server_address = "localhost:50051";
-    if (argc > 1) {
-        server_address = argv[1];
-    }
-
-    MemoryManagerClient client(server_address);
-
-    // Ejemplo de uso del cliente
-    uint64_t id = client.Create(sizeof(int), "int");
-    if (id > 0) {
-        std::string value = "42"; // En la implementación real, esto sería el valor serializado
-        if (client.Set(id, value)) {
-            std::string retrieved = client.Get(id);
-            std::cout << "Valor recuperado: " << retrieved << std::endl;
-        }
-
-        client.IncreaseRefCount(id);
-        client.DecreaseRefCount(id);
-    }
-
-    return 0;
-}

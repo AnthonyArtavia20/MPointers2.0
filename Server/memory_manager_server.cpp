@@ -130,7 +130,7 @@ int main(int argc, char** argv) { //Ciclo principal del servidor.
 
     int port = 50051; //puerto definido por defecto, se actualiza luego si se ingresa otro.
     size_t size_mb = 100; //tamaño por defecto a almacenar.
-    std::string dump_folder = "./dumps"; //./dumps es una carpeta predeterminada donde se guardan cosas generadas por el programa.
+    std::string dump_folder = "../dumpFolderRegistros"; //./dumps es una carpeta predeterminada donde se guardan cosas generadas por el programa.
 
     // Aquí se parsean los argumentos ingresados por línea de comandos
     for (int i = 1; i < argc; i++) { //Posterior se itera sobre argv para parsear los argumentos e ir configurando el server.
