@@ -5,6 +5,7 @@
 #include <memory>
 #include <sstream>
 #include "memory_manager_client.cpp"  // Incluye la clase MemoryManagerClient para poder accerder a los métodos del cliente.
+using namespace std;
 
 template <typename T>
 class MPointer {
@@ -82,7 +83,12 @@ class MPointer {
 
     //Destructor de la clase MPointer, disminuye el coteo de referencias de memoria de un bloque creado que se destruye.
     ~MPointer() {
-      client->DecreaseRefCount(id);
+      if (client) {
+        cout << "Llamando a DecreaseRefCount para ID: " << id << endl;
+        client->DecreaseRefCount(id);
+      } else {
+        cout << "Client es nullptr, no se llama a DecreaseRefCount" << endl;
+      }
     }
 };
 

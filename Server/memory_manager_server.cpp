@@ -4,7 +4,24 @@
 #include <grpcpp/grpcpp.h> // Uso de gRPC
 #include <grpcpp/health_check_service_interface.h> // de gRPC para verificar que el server funcione correctamente
 #include <grpcpp/ext/proto_server_reflection_plugin.h> // Para gRPC
+#include <csignal> // para usar señales como SIGNINT para el  Ctrl + c
+#include <chrono>
+#include <thread>
 #include "../ProtoCompilation/memory_manager.grpc.pb.h" //Incluye el archivo generado por el compilador de gRPC a partir defl archivo .proto del servicio MemoryService. Este archivo contiene las definiciones de los mensajes y servicios utilizados en el código.
+
+//Se declara el servidor com global para que pueda ser accedido desde el manejador de señales:
+std::unique_ptr<grpc::Server> server;
+
+//Variable atómica para indicar que el server debe cerarse:
+std::atomic<bool> shutdown_requested(false);
+
+// Manejador de señales para capturar SIGINT (Ctrl+C)
+void handle_signal(int signal) {
+    if (signal == SIGINT) {
+        std::cout << "Recibida señal SIGINT, cerrando el servidor..." << std::endl;
+        shutdown_requested = true; // Indicar que el servidor debe cerrarse
+    }
+}
 
 class MemoryServiceImpl final : public memory_manager::MemoryService::Service {
 private: //Definición de atributos(varaibles miembro)
@@ -26,22 +43,46 @@ public:
 
     ~MemoryServiceImpl() { // Destructor, encargado de liberar la memoria reservada.
         //En resumidas cuentas esa "~" indica al programa que eso es el destructor, y es llamado al parar el programa.
+        std::cout << "Ejecutando destructor de MemoryServiceImpl..." << std::endl;
         free(memory_block);
-        std::cout << "Memoria liberada" << std::endl;
+        std::cout << "Memoria liberada" << std::endl << std::endl << std::flush; //forzar la salida por la consola.
     }
 
     //Primer método, creación:
     grpc::Status Create(grpc::ServerContext* context,
                        const memory_manager::CreateRequest* request,
                        memory_manager::CreateResponse* response) override {
-        std::cout << "Create llamado - Tamaño: " << request->size() << ", Tipo: " << request->type() << std::endl;
+        std::cout << "Create llamado - Tamaño en bytes: " << request->size() << ", Tipo: " << request->type() << std::endl;
 
-        // Aquí se implementará la lógica real para reservar un bloque en memory_block
-        // Por ahora, solo devolvemos un ID incremental
-        response->set_id(next_id++);
+        //Verificación del tamaño disponible para confirmar la reservar si el disponible es suficiente.
+        size_t size_needed = request->size();
+        if(size_needed > memory_size) {
+            response->set_success(false); // En caso de que el tamaño no sea suficiente.
+            return grpc::Status::OK;
+        }
+
+        //Aquí se debería encontrar en el "disco" o reserva virtual un espacio disponible, lo de desfragmentación
+        //Agregar aquí!!!!!!!!
+        //Por el momento, el bloque siempre está libre
+
+        void* block_start = static_cast<char*>(memory_block) + next_id; // Asignación simple y no óptima.
+        next_id += size_needed;
+        /*
+            Explicación de esta asignación simple: static_cast<char*>(memory_block): memory_block es un puntero void, osea un puntero genérico. Se coniverte a char,
+            pues char permite aritmética de punteros en bytes, lo que hace más fácil el cálculo de direcciones dentro del bloque de memoria.
+
+            + mext_id, es un contador que lleva el registro de cuántos bytes se han asignado hasta ese momento.
+            Al sumar next_id al inicio del bloque de memoria (memory_block), se obtiene la direción de memoria donde debe comenzar el nuevo bloque.
+
+            next_id += size_needed: Después de que se asigna un bloque, se tiene que incrementar next_id por el tamaño del bloque asignado, esto hace que la próxima asignación comience después del bloque actual.
+
+        */
+
+        //Una vez asignado, se devuelve el id del bloque, para ponerle un valor o así...
+        response->set_id(next_id);
         response->set_success(true);
 
-        // Generar dump de memoria (implementar después)
+        //Recordar generar el dump de memoria acá.
 
         return grpc::Status::OK;
     }
@@ -113,10 +154,19 @@ void RunServer(int port, size_t size_mb, const std::string& dump_folder) { //Rec
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
     builder.RegisterService(&service);
 
-    std::unique_ptr<grpc::Server> server(builder.BuildAndStart()); // 5. Inicialización del servidor.
+    // Usar la variable global `server` en lugar de crear una local
+    server = builder.BuildAndStart(); // <-- Aquí se usa la variable global
     std::cout << "Server escuchando en " << server_address << std::endl;
 
-    server->Wait(); //6. Mantiene el server en ejecución.
+    // Bucle principal para verificar si se ha solicitado el cierre
+    while (!shutdown_requested) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Esperar 100 ms
+    }
+
+    // Cerrar el servidor de manera controlada
+    server->Shutdown();
+    server->Wait();
+    std::cout << "Servidor cerrado correctamente" << std::endl;
 }
 
 int main(int argc, char** argv) { //Ciclo principal del servidor.
@@ -147,6 +197,9 @@ int main(int argc, char** argv) { //Ciclo principal del servidor.
             return 1;
         }
     }
+
+    //Se configura el manejador de señales para captuurar SIGINT (Ctrl+C)
+    std::signal(SIGINT, handle_signal);
 
     RunServer(port, size_mb, dump_folder); //Si todo bien, pasamos los argumentos parseados para configurar el server.
 
