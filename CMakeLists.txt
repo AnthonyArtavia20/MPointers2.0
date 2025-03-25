@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(MemoryManager)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Encontrar Protobuf y gRPC
@@ -59,6 +59,7 @@ target_link_libraries(mem-mgr
   ${PROTOBUF_LIBRARIES}
   gRPC::grpc++
   gRPC::grpc++_reflection
+  stdc++fs
 )
 
 # Cliente de prueba(modificación: usando main.cpp como punto de entrada, ya no el memory_manager_client.cpp)
@@ -71,4 +72,5 @@ target_link_libraries(mem-client
   memory_proto
   ${PROTOBUF_LIBRARIES}
   gRPC::grpc++
+  stdc++fs
 )

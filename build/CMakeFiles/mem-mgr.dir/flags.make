@@ -6,5 +6,5 @@ CXX_DEFINES = -DCARES_STATICLIB
 
 CXX_INCLUDES = -I"/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build"
 
-CXX_FLAGS = -std=gnu++14
+CXX_FLAGS = -std=gnu++17
 
