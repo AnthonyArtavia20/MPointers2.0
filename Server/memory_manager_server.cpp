@@ -74,43 +74,68 @@ public:
                        memory_manager::CreateResponse* response) override {
         cout << "Create llamado - Tamaño en bytes: " << request->size() << ", Tipo: " << request->type() << endl;
 
-        //Verificación del tamaño disponible para confirmar la reservar si el disponible es suficiente.
         size_t size_needed = request->size();
-        if(size_needed > memory_size) {
-            response->set_success(false); // En caso de que el tamaño no sea suficiente.
-            return grpc::Status::OK;
-        }
-
-        //Allocator: Implemementación que evita la desfragmentación, busca un bloque libre que sea lo suficientemente grande.
-        for (auto& block : bloques_memoria) {
-            if (block.is_free && block.size >= size_needed) {
-                block.is_free = false;
-                response->set_id(block.id);
-                response->set_success(true);
-                return grpc::Status::OK;
-            }
-        }
-
-        //Si no se encuentra un bloque libre lo que hacemos es crear uno:
-        if (next_id + size_needed > memory_size) {
+        if (size_needed > memory_size) {
             response->set_success(false);
             return grpc::Status::OK;
         }
 
-        void* block_start = static_cast<char*>(memory_block) + next_id;
-        BloquesMemoria new_block = {next_id, size_needed,false, block_start};
-        bloques_memoria.push_back(new_block);
-        next_id += size_needed;
+        //Primera optimización: Buscar un bloque(si está creado y libre) que se ajuste al tamaño del objeto entrante
+        BloquesMemoria* best_block = nullptr;
+        for (auto& block : bloques_memoria) {
+            if (block.is_free && block.size >= size_needed) {
+                if (!best_block || block.size < best_block->size) { //Lo que intenta encontrar es ese bloque que se ajuste perfecto
+                    best_block = &block;
+                }
+            }
+        }
 
-        //Una vez asignado, se devuelve el id del bloque, para ponerle un valor o así...
-        response->set_id(new_block.id);
-        response->set_success(true);
+        if (best_block) {
+            best_block->is_free = false;
+            response->set_id(best_block->id);
+            response->set_success(true);
+            generarDumpsMemoria();
+            return grpc::Status::OK;
+        }
 
-        //Generación del DumpDeMemoria:
-        generarDumpsMemoria();
+        //Segunda optimización: Antes de crear el nuevo bloque, verifica si hay algúnos espacios libre en los demás bloques, para poder fucionarlos
+        size_t free_space = memory_size - next_id;
+        if (free_space >= size_needed) {
+            void* block_start = static_cast<char*>(memory_block) + next_id;
+            BloquesMemoria new_block = {next_id, size_needed, false, block_start};
+            bloques_memoria.push_back(new_block);
+            next_id += size_needed;
 
+            response->set_id(new_block.id);
+            response->set_success(true);
+            generarDumpsMemoria();
+            return grpc::Status::OK;
+        }
+
+        //si fuese el caso que no hay espacio, se pueden fusionar los bloques libre:
+        for (auto it = bloques_memoria.begin(); it != bloques_memoria.end(); ++it) {
+            if (it->is_free) {
+                auto next_it = it + 1;
+                if (next_it != bloques_memoria.end() && next_it->is_free) {
+                    it->size += next_it->size; // Fusionar bloques contiguos
+                    bloques_memoria.erase(next_it);
+                    // Intentar asignar en el bloque fusionado
+                    if (it->size >= size_needed) {
+                        it->is_free = false;
+                        response->set_id(it->id);
+                        response->set_success(true);
+                        generarDumpsMemoria();
+                        return grpc::Status::OK;
+                    }
+                }
+            }
+        }
+
+        response->set_success(false);
         return grpc::Status::OK;
+
     }
+
     //Segundo método para poder establecer un valor a un bloque de memoria
     grpc::Status Set(grpc::ServerContext* context,
                     const memory_manager::SetRequest* request,
