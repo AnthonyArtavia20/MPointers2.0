@@ -74,23 +74,25 @@ public:
                        memory_manager::CreateResponse* response) override {
         cout << "Create llamado - Tamaño en bytes: " << request->size() << ", Tipo: " << request->type() << endl;
 
-        size_t size_needed = request->size();
-        if (size_needed > memory_size) {
+        size_t size_needed = request->size(); //Espacio solicitado por el cliente
+        if (size_needed > memory_size) { // verificación para ver si hay espacio suficiente en la reserva total.
             response->set_success(false);
             return grpc::Status::OK;
         }
 
-        //Primera optimización: Buscar un bloque(si está creado y libre) que se ajuste al tamaño del objeto entrante
-        BloquesMemoria* best_block = nullptr;
+        //Primera optimización: Buscar un bloque(si está creado y libre) que se ajuste al tamaño del objeto entrante(Por lo general nunca
+        // se usa en la primera vez que se ejecuta el programa  si no cuando ya se han hecho varios bloques en la segunda optimización y
+        // además varios liberaciones por medio del garbage colector).
+        BloquesMemoria* best_block = nullptr; //Creación de un puntero del tipo de estructura que crea bloques, esto para poder almacenar el mejor bloque de todos(el que mejor se ajuste al tamaño solicitado) entre la lista de bloques_memoria.
         for (auto& block : bloques_memoria) {
-            if (block.is_free && block.size >= size_needed) {
-                if (!best_block || block.size < best_block->size) { //Lo que intenta encontrar es ese bloque que se ajuste perfecto
-                    best_block = &block;
+            if (block.is_free && block.size >= size_needed) { //vemos si el boque actual está libre y si el tamaño disponible es suficiente.
+                if (!best_block || block.size < best_block->size) { //Si anteriormente no había un mejor bloque o si hay uno mejor al anterior, entonces lo definimos
+                    best_block = &block; //asignamos la dirección de memoria de ese bloque en la lista al puntero.
                 }
             }
         }
 
-        if (best_block) {
+        if (best_block) { //Posteriormente lo que se hace es definir ese bloque como ocupado y luego devolvemos el id.
             best_block->is_free = false;
             response->set_id(best_block->id);
             response->set_success(true);
@@ -98,7 +100,7 @@ public:
             return grpc::Status::OK;
         }
 
-        //Segunda optimización: Antes de crear el nuevo bloque, verifica si hay algúnos espacios libre en los demás bloques, para poder fucionarlos
+        //Segunda optimización: Calcular el espacio libre y crear un nuevo bloque si el espacio es suficiente(Normalmente se usa de primero antes que la PrimeraOptimización)
         size_t free_space = memory_size - next_id;
         if (free_space >= size_needed) {
             void* block_start = static_cast<char*>(memory_block) + next_id;
@@ -112,15 +114,17 @@ public:
             return grpc::Status::OK;
         }
 
-        //si fuese el caso que no hay espacio, se pueden fusionar los bloques libre:
+        //Tercera optimización, esta se usa si las dos ateriores optimizaciones no se cumplieron(por ejemplo que el vector esté vacio,
+        //  que los que tenga adentro no tenga el espacio suficiente, que el espacio total en memoria no sea suficiente). Esto fuciona
+        // los espacios libres de los bloques contiguos, haciendo que se pueda reutilizar ese espacio.
         for (auto it = bloques_memoria.begin(); it != bloques_memoria.end(); ++it) {
             if (it->is_free) {
-                auto next_it = it + 1;
+                auto next_it = it + 1; //Siguiente bloque en memoria el "+1" pues con solo sumar 1 ya se llega a donde comienza el otro.
                 if (next_it != bloques_memoria.end() && next_it->is_free) {
                     it->size += next_it->size; // Fusionar bloques contiguos
-                    bloques_memoria.erase(next_it);
-                    // Intentar asignar en el bloque fusionado
-                    if (it->size >= size_needed) {
+                    bloques_memoria.erase(next_it); // borramos el segundo bloque, pues este ya está fucionado, esto para evitar duplicados
+
+                    if (it->size >= size_needed) { // posteriormente intentamos asignar lo solicitado en el nuevo espacio.
                         it->is_free = false;
                         response->set_id(it->id);
                         response->set_success(true);
