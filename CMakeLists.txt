@@ -4,49 +4,56 @@ project(MemoryManager)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Encontrar Protobuf y gRPC
-find_package(Protobuf REQUIRED)
-find_package(gRPC REQUIRED)
-
-# Generar código desde .proto
-get_filename_component(hw_proto "memory_manager.proto" ABSOLUTE)
-get_filename_component(hw_proto_path "${hw_proto}" PATH)
-
-# Generar archivos .pb.{h,cc}
-add_custom_command(
-      OUTPUT "memory_manager.pb.h" "memory_manager.pb.cc"
-      COMMAND ${PROTOBUF_PROTOC_EXECUTABLE}
-      ARGS --proto_path=${hw_proto_path}
-           --cpp_out=${CMAKE_CURRENT_BINARY_DIR}
-           ${hw_proto}
-      DEPENDS ${hw_proto})
-
-# Generar archivos .grpc.pb.{h,cc}
-add_custom_command(
-      OUTPUT "memory_manager.grpc.pb.h" "memory_manager.grpc.pb.cc"
-      COMMAND ${PROTOBUF_PROTOC_EXECUTABLE}
-      ARGS --proto_path=${hw_proto_path}
-           --grpc_out=${CMAKE_CURRENT_BINARY_DIR}
-           --plugin=protoc-gen-grpc=`which grpc_cpp_plugin`
-           ${hw_proto}
-      DEPENDS ${hw_proto})
-
-# Definir biblioteca proto
-add_library(memory_proto
-  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.pb.cc
-  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.pb.h
-  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.grpc.pb.cc
-  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.grpc.pb.h
+# Rutas para evitar conflictos
+set(CMAKE_PREFIX_PATH
+  "/usr/local/opt/grpc"
+  "/usr/local/opt/protobuf"
+  "/usr/local/opt/abseil"
 )
 
-target_link_libraries(memory_proto
-  ${PROTOBUF_LIBRARIES}
-  gRPC::grpc++
-  gRPC::grpc++_reflection
+# ⚠️ IMPORTANTE: primero gRPC (para que él haga el find_package(Protobuf) con su versión)
+find_package(gRPC REQUIRED)
+find_package(absl REQUIRED)
+find_package(Protobuf REQUIRED)  # Este va al final para evitar conflictos
+
+# Ruta al .proto
+get_filename_component(hw_proto "${CMAKE_SOURCE_DIR}/memory_manager.proto" ABSOLUTE)
+get_filename_component(hw_proto_path "${hw_proto}" PATH)
+
+# Generar código en build/
+add_custom_command(
+  OUTPUT
+    "${CMAKE_CURRENT_BINARY_DIR}/memory_manager.pb.h"
+    "${CMAKE_CURRENT_BINARY_DIR}/memory_manager.pb.cc"
+    "${CMAKE_CURRENT_BINARY_DIR}/memory_manager.grpc.pb.h"
+    "${CMAKE_CURRENT_BINARY_DIR}/memory_manager.grpc.pb.cc"
+  COMMAND ${Protobuf_PROTOC_EXECUTABLE}
+  ARGS
+    --proto_path=${hw_proto_path}
+    --cpp_out=${CMAKE_CURRENT_BINARY_DIR}
+    --grpc_out=${CMAKE_CURRENT_BINARY_DIR}
+    --plugin=protoc-gen-grpc=$<TARGET_FILE:gRPC::grpc_cpp_plugin>
+    ${hw_proto}
+  DEPENDS ${hw_proto}
+)
+
+# Biblioteca proto
+add_library(memory_proto
+  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.pb.cc
+  ${CMAKE_CURRENT_BINARY_DIR}/memory_manager.grpc.pb.cc
 )
 
 target_include_directories(memory_proto PUBLIC
   ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+target_link_libraries(memory_proto
+  gRPC::grpc++
+  gRPC::grpc++_reflection
+  ${Protobuf_LIBRARIES}
+
+  absl::strings
+  absl::log
 )
 
 # Servidor
@@ -56,13 +63,15 @@ add_executable(mem-mgr
 
 target_link_libraries(mem-mgr
   memory_proto
-  ${PROTOBUF_LIBRARIES}
   gRPC::grpc++
   gRPC::grpc++_reflection
-  stdc++fs
+  ${Protobuf_LIBRARIES}
+
+  absl::strings
+  absl::log
 )
 
-# Cliente de prueba(modificación: usando main.cpp como punto de entrada, ya no el memory_manager_client.cpp)
+# Cliente
 add_executable(mem-client
   Client/main.cpp
   Client/memory_manager_client.cpp
@@ -70,7 +79,15 @@ add_executable(mem-client
 
 target_link_libraries(mem-client
   memory_proto
-  ${PROTOBUF_LIBRARIES}
   gRPC::grpc++
-  stdc++fs
+  ${Protobuf_LIBRARIES}
+
+  absl::strings
+  absl::log
 )
+
+# Linux solamente
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  target_link_libraries(mem-mgr stdc++fs)
+  target_link_libraries(mem-client stdc++fs)
+endif()

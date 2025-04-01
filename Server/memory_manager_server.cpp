@@ -7,7 +7,7 @@
 #include <csignal> // para usar señales como SIGNINT para el  Ctrl + c
 #include <chrono>
 #include <thread>
-#include "../ProtoCompilation/memory_manager.grpc.pb.h" //Incluye el archivo generado por el compilador de gRPC a partir defl archivo .proto del servicio MemoryService. Este archivo contiene las definiciones de los mensajes y servicios utilizados en el código.
+#include "memory_manager.grpc.pb.h" //Incluye el archivo generado por el compilador de gRPC a partir defl archivo .proto del servicio MemoryService. Este archivo contiene las definiciones de los mensajes y servicios utilizados en el código.
 #include <vector> // para la parte del allocator, para crear la lista de bloques libres de memoria en Create.
 #include <fstream> // para usar std::ofstream
 #include <filesystem>
