@@ -289,7 +289,7 @@ public:
                       << block.start << "\t"
                       << block.size << " bytes\t"
                       << (block.is_free ? "FREE" : "OCCUPIED") << "\t"
-                      << "Unknown\n"; // Reemplaza "Unknown" con el tipo cuando lo tengas
+                      << block.type << "\n"; // Reemplaza "Unknown" con el tipo cuando lo tengas
         }
 
         dump_file.close();
