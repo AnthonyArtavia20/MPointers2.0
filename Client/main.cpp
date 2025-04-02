@@ -15,10 +15,20 @@ int main(int argc, char** argv) {
     MPointer<int> myPtr = MPointer<int>::New();
 
     // Asignar un valor al bloque de memoria
-    *myPtr = 42;  // Esto ahora funciona correctamente
+    *myPtr = 1234;  // Esto ahora funciona correctamente
 
     // Obtener el valor almacenado:
     int value = *myPtr;
+    std::cout << "Valor almacenado: " << value << std::endl;
+
+    // Crear un nuevo MPointer
+    MPointer<int> myPtr2 = MPointer<int>::New();
+
+    // Asignar un valor al bloque de memoria
+    *myPtr2 = 12345;  // Esto ahora funciona correctamente
+
+    // Obtener el valor almacenado:
+    int value2 = *myPtr2;
     std::cout << "Valor almacenado: " << value << std::endl;
 
     return 0;

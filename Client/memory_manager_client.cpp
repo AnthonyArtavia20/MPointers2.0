@@ -2,11 +2,11 @@
 #include <memory>
 #include <string>
 #include <grpcpp/grpcpp.h>
-#include "../ProtoCompilation/memory_manager.grpc.pb.h"
+#include "memory_manager.grpc.pb.h"
 
 class MemoryManagerClient { // Clase para el RPC - cliente
 public:
-    MemoryManagerClient(const std::string& server_address) //Construcctor que inicializa el cliente contentándolo al server en específico.
+    MemoryManagerClient(const std::string& server_address) //Construcctor que inicializa el cliente conectándolo al server en específico.
         : stub_(memory_manager::MemoryService::NewStub(
             grpc::CreateChannel(server_address, grpc::InsecureChannelCredentials()))) {
         std::cout << "Cliente conectado a: " << server_address << std::endl;

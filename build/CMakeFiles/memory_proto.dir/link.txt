@@ -1,2 +1,2 @@
-/usr/bin/ar qc libmemory_proto.a CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o
-/usr/bin/ranlib libmemory_proto.a
+/Library/Developer/CommandLineTools/usr/bin/ar qc libmemory_proto.a CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libmemory_proto.a

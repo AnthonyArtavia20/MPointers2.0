@@ -1,3 +1,2 @@
 # Hashes of file build rules.
-c9c55f67c22c15412dcb65b58b934429 memory_manager.grpc.pb.h
-80fde3ee8e80b35c15a22390939a4184 memory_manager.pb.h
+4f16ef94e17b663f01ec2cfab9d08723 memory_manager.pb.h
