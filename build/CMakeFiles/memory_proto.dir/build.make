@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0
+CMAKE_SOURCE_DIR = /Users/sergiodanielalvarezchanto/desktop/MPointers2.0
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build
+CMAKE_BINARY_DIR = /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/memory_proto.dir/depend.make
@@ -69,9 +69,9 @@ include CMakeFiles/memory_proto.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/memory_proto.dir/flags.make
 
-memory_manager.pb.h: /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/memory_manager.proto
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating memory_manager.pb.h, memory_manager.pb.cc, memory_manager.grpc.pb.h, memory_manager.grpc.pb.cc"
-	/usr/local/opt/protobuf/bin/protoc --proto_path=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0 --cpp_out=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build --grpc_out=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build --plugin=protoc-gen-grpc=/usr/local/opt/grpc/bin/grpc_cpp_plugin /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/memory_manager.proto
+memory_manager.pb.h: /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/memory_manager.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating memory_manager.pb.h, memory_manager.pb.cc, memory_manager.grpc.pb.h, memory_manager.grpc.pb.cc"
+	/usr/local/opt/protobuf/bin/protoc --proto_path=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0 --cpp_out=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build --grpc_out=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build --plugin=protoc-gen-grpc=/usr/local/opt/grpc/bin/grpc_cpp_plugin /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/memory_manager.proto
 
 memory_manager.pb.cc: memory_manager.pb.h
 	@$(CMAKE_COMMAND) -E touch_nocreate memory_manager.pb.cc
@@ -88,30 +88,30 @@ CMakeFiles/memory_proto.dir/codegen:
 CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o: CMakeFiles/memory_proto.dir/flags.make
 CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o: memory_manager.pb.cc
 CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o: CMakeFiles/memory_proto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o -MF CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o.d -o CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o -c /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/memory_manager.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o -MF CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o.d -o CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o -c /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/memory_manager.pb.cc
 
 CMakeFiles/memory_proto.dir/memory_manager.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/memory_proto.dir/memory_manager.pb.cc.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/memory_manager.pb.cc > CMakeFiles/memory_proto.dir/memory_manager.pb.cc.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/memory_manager.pb.cc > CMakeFiles/memory_proto.dir/memory_manager.pb.cc.i
 
 CMakeFiles/memory_proto.dir/memory_manager.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/memory_proto.dir/memory_manager.pb.cc.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/memory_manager.pb.cc -o CMakeFiles/memory_proto.dir/memory_manager.pb.cc.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/memory_manager.pb.cc -o CMakeFiles/memory_proto.dir/memory_manager.pb.cc.s
 
 CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o: CMakeFiles/memory_proto.dir/flags.make
 CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o: memory_manager.grpc.pb.cc
 CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o: CMakeFiles/memory_proto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o -MF CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o.d -o CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o -c /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/memory_manager.grpc.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o -MF CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o.d -o CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o -c /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/memory_manager.grpc.pb.cc
 
 CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/memory_manager.grpc.pb.cc > CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/memory_manager.grpc.pb.cc > CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.i
 
 CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/memory_manager.grpc.pb.cc -o CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/memory_manager.grpc.pb.cc -o CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.s
 
 # Object files for target memory_proto
 memory_proto_OBJECTS = \
@@ -125,7 +125,7 @@ libmemory_proto.a: CMakeFiles/memory_proto.dir/memory_manager.pb.cc.o
 libmemory_proto.a: CMakeFiles/memory_proto.dir/memory_manager.grpc.pb.cc.o
 libmemory_proto.a: CMakeFiles/memory_proto.dir/build.make
 libmemory_proto.a: CMakeFiles/memory_proto.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libmemory_proto.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libmemory_proto.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/memory_proto.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/memory_proto.dir/link.txt --verbose=$(VERBOSE)
 
@@ -141,6 +141,6 @@ CMakeFiles/memory_proto.dir/depend: memory_manager.grpc.pb.cc
 CMakeFiles/memory_proto.dir/depend: memory_manager.grpc.pb.h
 CMakeFiles/memory_proto.dir/depend: memory_manager.pb.cc
 CMakeFiles/memory_proto.dir/depend: memory_manager.pb.h
-	cd /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0 /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0 /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles/memory_proto.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sergiodanielalvarezchanto/desktop/MPointers2.0 /Users/sergiodanielalvarezchanto/desktop/MPointers2.0 /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles/memory_proto.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/memory_proto.dir/depend
 

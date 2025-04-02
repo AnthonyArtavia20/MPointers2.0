@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0
+CMAKE_SOURCE_DIR = /Users/sergiodanielalvarezchanto/desktop/MPointers2.0
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build
+CMAKE_BINARY_DIR = /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/mem-client.dir/depend.make
@@ -73,32 +73,32 @@ CMakeFiles/mem-client.dir/codegen:
 .PHONY : CMakeFiles/mem-client.dir/codegen
 
 CMakeFiles/mem-client.dir/Client/main.cpp.o: CMakeFiles/mem-client.dir/flags.make
-CMakeFiles/mem-client.dir/Client/main.cpp.o: /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/main.cpp
+CMakeFiles/mem-client.dir/Client/main.cpp.o: /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/main.cpp
 CMakeFiles/mem-client.dir/Client/main.cpp.o: CMakeFiles/mem-client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mem-client.dir/Client/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mem-client.dir/Client/main.cpp.o -MF CMakeFiles/mem-client.dir/Client/main.cpp.o.d -o CMakeFiles/mem-client.dir/Client/main.cpp.o -c /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mem-client.dir/Client/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mem-client.dir/Client/main.cpp.o -MF CMakeFiles/mem-client.dir/Client/main.cpp.o.d -o CMakeFiles/mem-client.dir/Client/main.cpp.o -c /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/main.cpp
 
 CMakeFiles/mem-client.dir/Client/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mem-client.dir/Client/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/main.cpp > CMakeFiles/mem-client.dir/Client/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/main.cpp > CMakeFiles/mem-client.dir/Client/main.cpp.i
 
 CMakeFiles/mem-client.dir/Client/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mem-client.dir/Client/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/main.cpp -o CMakeFiles/mem-client.dir/Client/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/main.cpp -o CMakeFiles/mem-client.dir/Client/main.cpp.s
 
 CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o: CMakeFiles/mem-client.dir/flags.make
-CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o: /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/memory_manager_client.cpp
+CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o: /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/memory_manager_client.cpp
 CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o: CMakeFiles/mem-client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o -MF CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o.d -o CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o -c /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/memory_manager_client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o -MF CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o.d -o CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o -c /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/memory_manager_client.cpp
 
 CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/memory_manager_client.cpp > CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/memory_manager_client.cpp > CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.i
 
 CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/memory_manager_client.cpp -o CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/memory_manager_client.cpp -o CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.s
 
 # Object files for target mem-client
 mem__client_OBJECTS = \
@@ -212,7 +212,7 @@ mem-client: /usr/local/opt/abseil/lib/libabsl_throw_delegate.2407.0.0.dylib
 mem-client: /usr/local/opt/abseil/lib/libabsl_raw_logging_internal.2407.0.0.dylib
 mem-client: /usr/local/opt/abseil/lib/libabsl_log_severity.2407.0.0.dylib
 mem-client: CMakeFiles/mem-client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable mem-client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable mem-client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mem-client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -224,6 +224,6 @@ CMakeFiles/mem-client.dir/clean:
 .PHONY : CMakeFiles/mem-client.dir/clean
 
 CMakeFiles/mem-client.dir/depend:
-	cd /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0 /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0 /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build /Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles/mem-client.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sergiodanielalvarezchanto/desktop/MPointers2.0 /Users/sergiodanielalvarezchanto/desktop/MPointers2.0 /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build /Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles/mem-client.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/mem-client.dir/depend
 

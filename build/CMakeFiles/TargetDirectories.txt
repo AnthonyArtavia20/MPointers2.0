@@ -1,5 +1,5 @@
-/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles/memory_proto.dir
-/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles/mem-mgr.dir
-/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles/mem-client.dir
-/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles/edit_cache.dir
-/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/build/CMakeFiles/rebuild_cache.dir
+/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles/memory_proto.dir
+/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles/mem-mgr.dir
+/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles/mem-client.dir
+/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles/edit_cache.dir
+/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/build/CMakeFiles/rebuild_cache.dir
