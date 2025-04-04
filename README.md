@@ -34,7 +34,7 @@ Estando en dicha carpeta en otra terminal, se deberá ejecutar el siguiente coma
 Este programa aplica los conceptos fundamentales de la programación orientada a objetos (POO) y aplicación de patrones de diseño en la solución de un problema
 
 ##### Operaciones soportadas:
-+ **Create (size, type):** Crea un bloque en la memoria servervada en el server para el tamaño y tipo de datos indicado en la petición. Retorna un id que pertenece al espacio generado.
++ **Create (size, type):** Crea un bloque en la memoria reservada en el server para el tamaño y tipo de datos indicado en la petición. Retorna un id que pertenece al espacio generado.
 + **Set(id, value):** guarda un valor determinado en la posición de memoria indicado por Id.
 + **Get(id):**  retorna el valor guardado en el bloque de memoria identificado por el Id devuelto al hacer el create.
 
