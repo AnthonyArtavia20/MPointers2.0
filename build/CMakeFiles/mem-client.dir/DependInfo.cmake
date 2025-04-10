@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/main.cpp" "CMakeFiles/mem-client.dir/Client/main.cpp.o" "gcc" "CMakeFiles/mem-client.dir/Client/main.cpp.o.d"
-  "/Users/sergiodanielalvarezchanto/desktop/MPointers2.0/Client/memory_manager_client.cpp" "CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o" "gcc" "CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o.d"
+  "/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/main.cpp" "CMakeFiles/mem-client.dir/Client/main.cpp.o" "gcc" "CMakeFiles/mem-client.dir/Client/main.cpp.o.d"
+  "/Users/sergiodanielalvarezchanto/Desktop/MPointers2.0/Client/memory_manager_client.cpp" "CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o" "gcc" "CMakeFiles/mem-client.dir/Client/memory_manager_client.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

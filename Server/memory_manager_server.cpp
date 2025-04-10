@@ -38,6 +38,7 @@ struct BloquesMemoria {
     bool is_free; //LIbre o ocupado
     void* start; // Donde comienza el bloque
     std::string type; //Indica el tipo de dato para el bloque int, float...
+    std::string valueMemory; //El valor del dato que tiene guardado
 };
 
 class MemoryServiceImpl final : public memory_manager::MemoryService::Service {
@@ -163,7 +164,7 @@ public:
     grpc::Status Set(grpc::ServerContext* context,
                     const memory_manager::SetRequest* request,
                     memory_manager::SetResponse* response) override {
-        cout << "Set llamado - ID: " << request->id() << ", Valor: " << request->value() << endl;
+        cout << "Set - ID: " << request->id() << ", Valor: " << request->value() << endl;
 
         uint64_t id = request->id();
         const std::string& value = request->value();
@@ -190,7 +191,7 @@ public:
     grpc::Status Get(grpc::ServerContext* context,
                     const memory_manager::GetRequest* request,
                     memory_manager::GetResponse* response) override {
-        cout << "Get llamado - ID: " << request->id() << endl;
+        cout << "Get - ID: " << request->id() << endl;
 
         uint64_t id = request->id();
 
@@ -283,13 +284,15 @@ public:
 
         // Listar bloques
         dump_file << "Blocks:\n";
-        dump_file << "ID\tStart Address\tSize\tStatus\tType\n"; // Añade "Value" luego
+        dump_file << "ID\tStart Address\tSize\tStatus\t Type\tMemoryValue\n"; // Añade "Value" luego
         for (const auto& block : bloques_memoria) {
             dump_file << block.id << "\t"
                       << block.start << "\t"
                       << block.size << " bytes\t"
                       << (block.is_free ? "FREE" : "OCCUPIED") << "\t"
-                      << block.type << "\n"; // Reemplaza "Unknown" con el tipo cuando lo tengas
+                      << block.type << "\n"
+                      //<< block.valueMemory << "\n"
+                      ; 
         }
 
         dump_file.close();
@@ -299,10 +302,10 @@ public:
     //funcion del garbage collector
     void runGarbageCollector() {
         while (!stop_garbage_collector) {
-            std::this_thread::sleep_for(std::chrono::seconds(5)); // cada 5s
+            std::this_thread::sleep_for(std::chrono::seconds(1)); // cada 5s
     
             for (auto& block : bloques_memoria) {
-                if (!block.is_free && ref_counts[block.id] <= 0) {
+                if (!block.is_free && ref_counts[block.id] <= 0) { 
                     cout << "[GC] Liberando bloque ID " << block.id << endl;
                     block.is_free = true;
                     ref_counts.erase(block.id);

@@ -61,7 +61,7 @@ class MPointer {
 
     //sobrecarga del operador = para copiar el ID y aumentar el conteo de referencias.
     MPointer<T>& operator=(const MPointer<T>& other) {
-      if (this != &other) {  // Evitar auto-asignación
+      if (this->id != other.id) { // Evitar auto-asignación
           // Incrementar el conteo de referencias del nuevo ID
           client->IncreaseRefCount(other.id);
 
