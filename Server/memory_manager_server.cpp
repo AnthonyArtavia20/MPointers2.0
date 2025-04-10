@@ -110,21 +110,26 @@ public:
             }
         }
 
-        if (best_block) { //Posteriormente lo que se hace es definir ese bloque como ocupado y luego devolvemos el id.
+        //Posteriormente lo que se hace es definir ese bloque como ocupado y luego devolvemos el id.
+        if (best_block) {
             best_block->is_free = false;
             best_block->type = request->type();
+            ref_counts[best_block->id] = 1; // ✅ Inicializamos refCount
             response->set_id(best_block->id);
             response->set_success(true);
             generarDumpsMemoria();
             return grpc::Status::OK;
         }
 
+
         //Segunda optimización: Calcular el espacio libre y crear un nuevo bloque si el espacio es suficiente(Normalmente se usa de primero antes que la PrimeraOptimización)
         size_t free_space = memory_size - next_id;
         if (free_space >= size_needed) {
             void* block_start = static_cast<char*>(memory_block) + next_id;
             BloquesMemoria new_block = {next_id, size_needed, false, block_start, request->type()};
+            
             bloques_memoria.push_back(new_block);
+            ref_counts[new_block.id] = 1; // ✅ Inicializamos refCount
             next_id += size_needed;
 
             response->set_id(new_block.id);
@@ -143,9 +148,10 @@ public:
                     it->size += next_it->size; // Fusionar bloques contiguos
                     bloques_memoria.erase(next_it); // borramos el segundo bloque, pues este ya está fucionado, esto para evitar duplicados
 
-                    if (it->size >= size_needed) { // posteriormente intentamos asignar lo solicitado en el nuevo espacio.
+                    if (it->size >= size_needed) {// posteriormente intentamos asignar lo solicitado en el nuevo espacio.
                         it->is_free = false;
                         it->type = request->type();
+                        ref_counts[it->id] = 1; // Inicializamos refCount
                         response->set_id(it->id);
                         response->set_success(true);
                         generarDumpsMemoria();
@@ -171,20 +177,51 @@ public:
 
         for (auto& block : bloques_memoria) {
             if (block.id == id && !block.is_free) {
-                if (value.size() > block.size) {
-                    response->set_success(false);
-                    return grpc::Status::OK; // No cabe
-                }
+            std::istringstream iss(value);
 
-                memcpy(block.start, value.c_str(), value.size() + 1); // incluye \0
-                response->set_success(true);
-                generarDumpsMemoria();
+            if (block.type == "int") {
+                int val;
+                iss >> val;
+                memcpy(block.start, &val, sizeof(int));
+            } else if (block.type == "float") {
+                float val;
+                iss >> val;
+                memcpy(block.start, &val, sizeof(float));
+            } else if (block.type == "bool") {
+                bool val;
+                iss >> std::boolalpha >> val;
+                memcpy(block.start, &val, sizeof(bool));
+            } else if (block.type == "char") {
+                char val;
+                iss >> val;
+                memcpy(block.start, &val, sizeof(char));
+            } else if (block.type == "double") {
+                double val;
+                iss >> val;
+                memcpy(block.start, &val, sizeof(double));
+            } else if (block.type == "long") {
+                long val;
+                iss >> val;
+                memcpy(block.start, &val, sizeof(long));
+            } else if (block.type == "uint") {
+                uint64_t val;
+                iss >> val;
+                memcpy(block.start, &val, sizeof(uint64_t));
+            } else {
+                std::cerr << "Tipo no soportado: " << block.type << std::endl;
+                response->set_success(false);
                 return grpc::Status::OK;
+            }
+
+            block.valueMemory = value;
+            response->set_success(true);
+            generarDumpsMemoria();
+            return grpc::Status::OK;
             }
         }
 
         response->set_success(false);
-        return grpc::Status::OK; // ID no encontrado o bloque libre
+        return grpc::Status::OK;
     }
 
     //Tercer método, get: Permite obtener el valor almacenado en un bloque de memoria.
@@ -284,16 +321,42 @@ public:
 
         // Listar bloques
         dump_file << "Blocks:\n";
-        dump_file << "ID\tStart Address\tSize\tStatus\t Type\tMemoryValue\n"; // Añade "Value" luego
-        for (const auto& block : bloques_memoria) {
-            dump_file << block.id << "\t"
-                      << block.start << "\t"
-                      << block.size << " bytes\t"
-                      << (block.is_free ? "FREE" : "OCCUPIED") << "\t"
-                      << block.type << "\n"
-                      //<< block.valueMemory << "\n"
-                      ; 
+        dump_file << "ID\tStart Address\tSize\tStatus\t  Type\tValue\tRefCount\n";
+        // Escribir información de cada bloque
+    for (const auto& block : bloques_memoria) {
+        std::ostringstream valor_actual_stream;
+
+        if (!block.is_free && block.start != nullptr) {
+            if (block.type == "int") {
+                valor_actual_stream << *static_cast<int*>(block.start);
+            } else if (block.type == "float") {
+                valor_actual_stream << *static_cast<float*>(block.start);
+            } else if (block.type == "bool") {
+                valor_actual_stream << (*static_cast<bool*>(block.start) ? "true" : "false");
+            } else if (block.type == "double") {
+                valor_actual_stream << *static_cast<double*>(block.start);
+            } else if (block.type == "long") {
+                valor_actual_stream << *static_cast<long*>(block.start);
+            } else if (block.type == "uint") {
+                valor_actual_stream << *static_cast<uint64_t*>(block.start);
+            } else {
+                valor_actual_stream << "[tipo no compatible]";
+            }
         }
+
+        int ref_count = 0;
+        if (ref_counts.find(block.id) != ref_counts.end()) {
+            ref_count = ref_counts.at(block.id);
+        }
+
+        dump_file << block.id << "\t"
+                  << block.start << "\t"
+                  << block.size << " bytes\t"
+                  << (block.is_free ? "FREE" : "OCCUPIED") << "   "
+                  << block.type << "\t"
+                  << valor_actual_stream.str() << "\t"
+                  << ref_count << "\n";
+    }        
 
         dump_file.close();
         std::cout << "Dump generado: " << filename << std::endl;

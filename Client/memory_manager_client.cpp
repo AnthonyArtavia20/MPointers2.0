@@ -107,7 +107,7 @@ public:
         grpc::Status status = stub_->DecreaseRefCount(&context, request, &response);
 
         if (status.ok()) {
-            std::cout << "RefCount decrementado a: " << response.count() << std::endl;
+            //std::cout << "RefCount decrementado a: " << response.count() << std::endl;
             return response.success();
         } else {
             std::cerr << "Error RPC: " << status.error_message() << std::endl;

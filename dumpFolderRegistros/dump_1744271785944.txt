@@ -1,0 +1,16 @@
+===== Memory Dump =====
+Timestamp: 1744271785944 ms
+Memoria total reservada: 104857600 bytes
+Memoria Usada: 0 bytes (0%)
+
+Blocks:
+ID	Start Address	Size	Status	  Type	Value	RefCount
+1	0x7f9d78800001	8 bytes	FREE   long		0
+9	0x7f9d78800009	4 bytes	FREE   int		0
+13	0x7f9d7880000d	8 bytes	FREE   uint		0
+21	0x7f9d78800015	4 bytes	FREE   int		0
+25	0x7f9d78800019	8 bytes	FREE   uint		0
+33	0x7f9d78800021	4 bytes	FREE   int		0
+37	0x7f9d78800025	8 bytes	FREE   uint		0
+45	0x7f9d7880002d	4 bytes	FREE   int		0
+49	0x7f9d78800031	8 bytes	FREE   uint		0
