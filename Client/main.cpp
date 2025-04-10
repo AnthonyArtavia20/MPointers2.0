@@ -13,11 +13,11 @@ private:
 public:
     ListaEnlazada() {
         cabeza = MPointer<uint64_t>::New();
-        *cabeza = 0; // 0 representa null
+        *cabeza = 0; 
         contador = 0;
     }
 
-    void insertarAlInicio(int valor) {
+    void insertarValorALinkedList(int valor) {
         // Crear y asignar valor al nodo actual
         valores[contador] = MPointer<int>::New();
         *valores[contador] = valor;
@@ -28,7 +28,7 @@ public:
         *siguientes[contador] = idCabeza; // El nuevo nodo apunta al anterior cabeza
 
         // Actualizar cabeza al nuevo nodo
-        *cabeza = &valores[contador]; // Guardar ID del nuevo nodo como cabeza
+        *cabeza = valores[contador].operator&();// Guardar ID del nuevo nodo como cabeza
 
         contador++;
     }
@@ -62,28 +62,32 @@ int main(int argc, char** argv) {
 
     std::string server_address = argv[1];
     MPointer<int>::Init(server_address);
+    MPointer<float>::Init(server_address);
+    MPointer<bool>::Init(server_address);
+    MPointer<long>::Init(server_address);
+    MPointer<char>::Init(server_address);
     MPointer<uint64_t>::Init(server_address); // Necesario para punteros a IDs
 
+
     // === Pruebas individuales ===
-    MPointer<int> myPtr = MPointer<int>::New();
-    *myPtr = 1234;
-    int value = *myPtr;
+    MPointer<long> myPtr = MPointer<long>::New();
+    *myPtr = 1234.5;
+    long value = *myPtr;
     std::cout << "Valor almacenado: " << value << std::endl;
 
     MPointer<int> myPtr2 = MPointer<int>::New();
-    *myPtr2 = 12345;
+    *myPtr2 = 434;
     int value2 = *myPtr2;
     std::cout << "Valor almacenado: " << value2 << std::endl;
+
+    MPointer<int> myPrt3 = myPtr2;
 
     // === Lista enlazada con MPointers ===
     std::cout << "\n== Lista enlazada usando MPointers ==" << std::endl;
     ListaEnlazada lista;
-    lista.insertarAlInicio(30);
-    lista.insertarAlInicio(20);
-    lista.insertarAlInicio(10);
-
-    std::cout << "Lista: ";
-    lista.imprimir();
+    lista.insertarValorALinkedList(30);
+    lista.insertarValorALinkedList(20);
+    lista.insertarValorALinkedList(10);
 
     return 0;
 }

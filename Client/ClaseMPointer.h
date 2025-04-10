@@ -3,9 +3,24 @@
 
 #include <string>
 #include <memory>
+#include <type_traits>
 #include <sstream>
 #include "memory_manager_client.cpp"  // Incluye la clase MemoryManagerClient para poder accerder a los métodos del cliente.
 using namespace std;
+
+
+// Función auxiliar para traducir T a string
+template<typename T>
+std::string tipoComoTexto() {
+    if (std::is_same<T, int>::value) return "int";
+    if (std::is_same<T, float>::value) return "float";
+    if (std::is_same<T, bool>::value) return "bool";
+    if (std::is_same<T, double>::value) return "double";
+    if (std::is_same<T, long>::value) return "long";
+    if (std::is_same<T, char>::value) return "char";
+    if (std::is_same<T, uint64_t>::value) return "uint";
+    return "unknown";
+}
 
 template <typename T>
 class MPointer {
@@ -22,7 +37,7 @@ class MPointer {
     //Método para crear un nuevo bloque de memoria
     static MPointer<T> New() {
       MPointer<T> ptr;
-      ptr.id = client->Create(sizeof(T), typeid(T).name()); // typeid(t).name lo que indica es que tipo de dato es el que se está ingresando, como hacerle manualmente "int"
+      ptr.id = client->Create(sizeof(T), tipoComoTexto<T>()); // typeid(t).name lo que indica es que tipo de dato es el que se está ingresando
       return ptr;
     }
 
@@ -59,6 +74,18 @@ class MPointer {
           return Reference(id, client);
       }
 
+    // Constructor por defecto
+    MPointer() = default;
+
+    // Constructor de copia
+    MPointer(const MPointer<T>& other) {
+        id = other.id;
+        if (client) {
+            client->IncreaseRefCount(id);
+        }
+    }
+
+
     //sobrecarga del operador = para copiar el ID y aumentar el conteo de referencias.
     MPointer<T>& operator=(const MPointer<T>& other) {
       if (this->id != other.id) { // Evitar auto-asignación
@@ -84,7 +111,7 @@ class MPointer {
     //Destructor de la clase MPointer, disminuye el coteo de referencias de memoria de un bloque creado que se destruye.
     ~MPointer() {
       if (client) {
-        cout << "Llamando a DecreaseRefCount para ID: " << id << endl;
+        //cout << "Llamando a DecreaseRefCount para ID: " << id << endl;
         client->DecreaseRefCount(id);
       } else {
         cout << "Client es nullptr, no se llama a DecreaseRefCount" << endl;
