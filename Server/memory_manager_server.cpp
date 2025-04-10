@@ -114,7 +114,7 @@ public:
         if (best_block) {
             best_block->is_free = false;
             best_block->type = request->type();
-            ref_counts[best_block->id] = 1; // ✅ Inicializamos refCount
+            ref_counts[best_block->id] = 1; // Inicializamos refCount
             response->set_id(best_block->id);
             response->set_success(true);
             generarDumpsMemoria();
@@ -129,7 +129,7 @@ public:
             BloquesMemoria new_block = {next_id, size_needed, false, block_start, request->type()};
             
             bloques_memoria.push_back(new_block);
-            ref_counts[new_block.id] = 1; // ✅ Inicializamos refCount
+            ref_counts[new_block.id] = 1; // Inicializamos refCount
             next_id += size_needed;
 
             response->set_id(new_block.id);
