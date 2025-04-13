@@ -1,0 +1,11 @@
+Con este comando se generan los cuatro archivos proto:
+protoc --proto_path=. --cpp_out=ProtoCompilation --grpc_out=ProtoCompilation --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` memory_manager.proto
+
+protoc --version
+libprotoc 3.21.12
+
+dpkg -l | grep libprotobuf
+ii  libprotobuf-dev:amd64                         3.21.12-8.2build1                        amd64        protocol buffers C++ library (development files) and proto files
+ii  libprotobuf-lite32t64:amd64                   3.21.12-8.2build1                        amd64        protocol buffers C++ library (lite version)
+ii  libprotobuf32t64:amd64                        3.21.12-8.2build1                        amd64        protocol buffers C++ library
+
