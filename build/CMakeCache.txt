@@ -240,7 +240,7 @@ Protobuf_LITE_LIBRARY_DEBUG:FILEPATH=/usr/local/lib/libprotobuf-lite.a
 Protobuf_LITE_LIBRARY_RELEASE:FILEPATH=/usr/local/lib/libprotobuf-lite.a
 
 //The Google Protocol Buffers Compiler
-Protobuf_PROTOC_EXECUTABLE:FILEPATH=/usr/local/bin/protoc
+Protobuf_PROTOC_EXECUTABLE:FILEPATH=/usr/bin/protoc
 
 //Path to a library.
 Protobuf_PROTOC_LIBRARY_DEBUG:FILEPATH=/usr/local/lib/libprotoc.a
@@ -410,7 +410,7 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Protobuf
-FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/usr/local/lib/libprotobuf.a][/usr/local/include][v3.19.4()]
+FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/usr/local/lib/libprotobuf.a][/usr/local/include][v3.21.6()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: Protobuf_INCLUDE_DIR

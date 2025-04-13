@@ -71,14 +71,14 @@ include CMakeFiles/memory_proto.dir/flags.make
 
 memory_manager.pb.h: /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager.proto
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir="/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Generating memory_manager.pb.h, memory_manager.pb.cc"
-	/usr/local/bin/protoc --proto_path=/home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0 --cpp_out=/home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager.proto
+	/usr/bin/protoc --proto_path=/home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0 --cpp_out=/home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager.proto
 
 memory_manager.pb.cc: memory_manager.pb.h
 	@$(CMAKE_COMMAND) -E touch_nocreate memory_manager.pb.cc
 
 memory_manager.grpc.pb.h: /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager.proto
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir="/home/anthony/Documents/Datos 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Generating memory_manager.grpc.pb.h, memory_manager.grpc.pb.cc"
-	/usr/local/bin/protoc --proto_path=/home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0 --grpc_out=/home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager.proto
+	/usr/bin/protoc --proto_path=/home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0 --grpc_out=/home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/build --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` /home/anthony/Documents/Datos\ 2/Proyetos/Proyecto1_AdminMemoria/DesarrolloPRoyecto/MPointers2.0/memory_manager.proto
 
 memory_manager.grpc.pb.cc: memory_manager.grpc.pb.h
 	@$(CMAKE_COMMAND) -E touch_nocreate memory_manager.grpc.pb.cc
